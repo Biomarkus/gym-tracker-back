@@ -1,0 +1,11 @@
+**/.idea
+**/__pycache__
+certs
+.venv
+*.env
+*.pyc
+build
+Hero_Manager.*
+development_config.yaml
+
+test.db
