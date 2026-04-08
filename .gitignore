@@ -7,5 +7,7 @@ certs
 build
 Hero_Manager.*
 development_config.yaml
+Gym_Tracker_Back.egg-info
 
 test.db
+gym.db
