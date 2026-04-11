@@ -17,9 +17,9 @@ class SessionsApi(Resource):
     def post(self) -> dict:
         try:
             data: dict = request.get_json()
-            hero_creation_model: SessionCreationBasicModel = SessionCreationBasicModel(**data)
+            session_creation_model: SessionCreationBasicModel = SessionCreationBasicModel(**data)
 
-            new_session = Session(**hero_creation_model.model_dump())
+            new_session = Session(**session_creation_model.model_dump())
             session.add(new_session)
             session.commit()
 

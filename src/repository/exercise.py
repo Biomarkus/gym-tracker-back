@@ -1,0 +1,8 @@
+from sqlalchemy.orm import Query
+
+from factory import session
+from src.db.models.exercise import Exercise
+
+
+def get_exercise_by_id(exercise_id: int) -> Query:
+    return session.query(Exercise).filter(Exercise.id == exercise_id)
