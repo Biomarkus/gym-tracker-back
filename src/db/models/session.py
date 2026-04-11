@@ -11,7 +11,8 @@ class Session(Base):
 
     session_id = Column(Integer, primary_key=True, autoincrement=True)
     title: str = Column(String(MAX_TEXT_LENGTH), nullable=False)
-    date: datetime = Column(DateTime, nullable=True)
-    exercises: list = relationship(
-        "Power", cascade="all, delete-orphan"
+    start_date: datetime = Column(DateTime, nullable=False, default=datetime.now())
+    end_date: datetime = Column(DateTime, nullable=True)
+    session_exercises: list = relationship(
+        "SessionExercise", cascade="all, delete-orphan"
     )

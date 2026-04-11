@@ -1,3 +1,4 @@
 SESSION_TABLE_NAME = "sessions"
 EXERCISE_TABLE_NAME = "exercises"
+CATEGORY_TABLE_NAME = "categories"
 MAX_TEXT_LENGTH = 30
