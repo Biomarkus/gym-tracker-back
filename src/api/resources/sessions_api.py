@@ -28,3 +28,4 @@ class SessionsApi(Resource):
 
         except SQLAlchemyError as exc:
             abort(HTTPStatus.INTERNAL_SERVER_ERROR, description=exc)
+

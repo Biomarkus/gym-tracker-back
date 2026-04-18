@@ -8,4 +8,4 @@ class Category(Base):
     __tablename__ = CATEGORY_TABLE_NAME
 
     category_id = Column(Integer, primary_key=True, autoincrement=True)
-    name: str = Column(String(MAX_TEXT_LENGTH), nullable=False)
+    name: str = Column(String(MAX_TEXT_LENGTH), nullable=False, unique=True)

@@ -1,5 +1,7 @@
 from datetime import datetime
 
+from src.exceptions import WrongDateFormat
+
 
 def format_date_response(date_input: datetime | None) -> str | None:
     return date_input.strftime("%Y-%m-%d %H:%M:%S") if date_input else None
