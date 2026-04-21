@@ -1,11 +1,11 @@
 from sqlalchemy import Column, Integer, ForeignKey
 
-from config.constants import SESSION_TABLE_NAME, EXERCISE_TABLE_NAME
+from config.constants import SESSION_TABLE_NAME, EXERCISE_TABLE_NAME, SESSION_EXERCISE_TABLE_NAME
 from factory import Base
 
 
 class SessionExercise(Base):
-    __tablename__ = "session_exercise"
+    __tablename__ = SESSION_EXERCISE_TABLE_NAME
 
     id = Column(Integer, primary_key=True)
     session_id = Column(ForeignKey(f"{SESSION_TABLE_NAME}.session_id"))
