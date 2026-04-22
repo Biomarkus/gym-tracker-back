@@ -1,6 +1,7 @@
 from http import HTTPStatus
 
 from flask_restful import Resource
+from pydantic import ValidationError
 from sqlalchemy.exc import SQLAlchemyError
 from flask import request, abort
 

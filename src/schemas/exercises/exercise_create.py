@@ -12,3 +12,4 @@ class ExerciseCreationModel(BaseModel):
     def validate_category_id(cls, value: int):
         if not get_category_by_id(category_id=value).scalar():
             raise ValidationError("Category id doesn't exist")
+        return value

@@ -8,6 +8,7 @@ from factory import Base
 
 class Session(Base):
     __tablename__ = SESSION_TABLE_NAME
+    __table_args__ = {'extend_existing': True}
 
     session_id = Column(Integer, primary_key=True, autoincrement=True)
     title: str = Column(String(MAX_TEXT_LENGTH), nullable=False)

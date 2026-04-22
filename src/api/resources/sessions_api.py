@@ -6,8 +6,6 @@ from flask import request, abort
 
 from factory import session
 from src.db.models.session import Session
-from src.db.models.session_exercise import SessionExercise
-from src.db.models.exercise import Exercise
 from src.db.models.category import Category
 from src.schemas.sessions.session_create import SessionCreationBasicModel
 from src.schemas.sessions.session_response import SessionResponseModel

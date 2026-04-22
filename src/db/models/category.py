@@ -6,6 +6,7 @@ from factory import Base
 
 class Category(Base):
     __tablename__ = CATEGORY_TABLE_NAME
+    __table_args__ = {'extend_existing': True}
 
     category_id = Column(Integer, primary_key=True, autoincrement=True)
     name: str = Column(String(MAX_TEXT_LENGTH), nullable=False, unique=True)

@@ -16,7 +16,7 @@ class SessionFilterApi(Resource):
             data: dict = request.get_json()
             session_filters: dict = SessionFiltersModel(**data).model_dump(exclude_none=True)
 
-            sessions_query = get_sessions_by_filters(session=session, session_filters=session_filters)
+            sessions_query = get_sessions_by_filters(session_filters=session_filters)
 
             return [SessionResponseModel.model_validate(session_response).model_dump()
                     for session_response in sessions_query.all()]

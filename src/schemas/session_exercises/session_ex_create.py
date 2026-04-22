@@ -1,15 +1,25 @@
-from pydantic import BaseModel, field_validator, ValidationError
+from pydantic import BaseModel, field_validator
 from src.repository.exercise import get_exercise_by_id
+from src.repository.session import get_sessions_by_filters
+
 
 class SessionExerciseCreationModel(BaseModel):
     session_id: int
     exercise_id: int
     reps: int
-    weight: int
+    weight: float
 
 
     @field_validator('exercise_id')
     @classmethod
-    def validate_exercise_id(cls, value: int):
-        if not get_exercise_by_id(exercise_id=value):
-            raise ValidationError("Exercise id doesn't exist")
+    def validate_exercise_id(cls, value: int) -> int:
+        if not get_exercise_by_id(exercise_id=value).scalar():
+            raise ValueError("Exercise id doesn't exist")
+        return  value
+
+    @field_validator('session_id')
+    @classmethod
+    def validate_session_id(cls, value: int) -> int:
+        if not get_sessions_by_filters(session_filters={'session_id': value}).scalar():
+            raise ValueError("Session id doesn't exist")
+        return  value

@@ -19,9 +19,10 @@ class CategoriesApi(Resource):
             category_creation_model: CategoryCreationModel = CategoryCreationModel(**data)
             if category_repository.get_categories_by_name(category_name=category_creation_model.name).scalar():
                 raise CategoryConflict(details=f"Category with name: {category_creation_model.name} already exists!")
-            create_new_category(category=Category(**category_creation_model.model_dump()))
+            new_category = Category(**category_creation_model.model_dump())
+            create_new_category(category=new_category)
 
-            return CategoryResponseModel.model_validate(category_creation_model).model_dump()
+            return CategoryResponseModel.model_validate(new_category).model_dump()
         except CategoryConflict as e:
             abort(HTTPStatus.CONFLICT, description=e.details)
 

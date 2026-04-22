@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Query
 
 from factory import session
-from models.session_exercise import SessionExercise
+from src.db.models.session_exercise import SessionExercise
 from src.repository.filter_querier import FilterQuerier
 
 

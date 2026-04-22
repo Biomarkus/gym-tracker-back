@@ -4,7 +4,7 @@ from factory import session
 
 
 def get_category_by_id(category_id: int) -> Query:
-    return session.query(Category).filter_by(id=category_id)
+    return session.query(Category).filter_by(category_id=category_id)
 
 
 def get_categories_by_name(category_name: str) -> Query:

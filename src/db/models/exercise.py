@@ -6,8 +6,9 @@ from factory import Base
 
 class Exercise(Base):
     __tablename__ = EXERCISE_TABLE_NAME
+    __table_args__ = {'extend_existing': True}
 
     exercise_id = Column(Integer, primary_key=True, autoincrement=True)
     title: str = Column(String(MAX_TEXT_LENGTH), nullable=False)
-    iconPath: str = Column(String(MAX_TEXT_LENGTH), nullable=False)
+    icon_path: str = Column(String(MAX_TEXT_LENGTH), nullable=False)
     category_id: int = Column(Integer, ForeignKey(f"{CATEGORY_TABLE_NAME}.category_id"), nullable=False)

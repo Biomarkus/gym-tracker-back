@@ -16,9 +16,10 @@ class ExercisesApi(Resource):
         if exercise_repository.get_exercise_by_filters({'title': exercise_creation_model.title,
                                                         'category_id': exercise_creation_model.category_id}).scalar():
             raise ExerciseConflict(details=f"Exercise with this name and category id already exists")
-        create_new_exercise(Exercise(**exercise_creation_model.model_dump()))
+        new_exercise = Exercise(**exercise_creation_model.model_dump())
+        create_new_exercise(new_exercise)
 
-        return ExerciseResponseModel.model_validate(exercise_creation_model).model_dump()
+        return ExerciseResponseModel.model_validate(new_exercise).model_dump()
 
     def get(self) -> list[dict]:
         exercises = exercise_repository.get_exercise_by_filters().all()
