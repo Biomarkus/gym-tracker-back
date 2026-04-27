@@ -4,6 +4,7 @@ from sqlalchemy.orm import relationship
 
 from config.constants import SESSION_TABLE_NAME, MAX_TEXT_LENGTH
 from factory import Base
+from models.session_tag_association import session_tag_association
 
 
 class Session(Base):
@@ -16,4 +17,10 @@ class Session(Base):
     end_date: datetime = Column(DateTime, nullable=True)
     session_exercises: list = relationship(
         "SessionExercise", cascade="all, delete-orphan"
+    )
+
+    session_tags = relationship(
+        "SessionTag",
+        secondary=session_tag_association,
+        back_populates="sessions"
     )

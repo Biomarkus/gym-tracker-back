@@ -12,11 +12,10 @@ from src.api.resources.sessions_api import SessionsApi
 api_v1_bp = Blueprint('api_v1', __name__, url_prefix='/api/v1')
 api_v1 = Api(api_v1_bp)
 
-def register_routes(app: Api):
-    api_v1.add_resource(SessionsApi, '/sessions') #POST
-    api_v1.add_resource(SessionFilterApi, '/session/filter') #POST
-    api_v1.add_resource(SessionExercisesApi, '/session-exercise')
-    api_v1.add_resource(SessionExercisesByIdApi, '/session/<int:session_id>/exercises')
-    api_v1.add_resource(CategoriesApi, '/categories') #GET POST
-    api_v1.add_resource(ExercisesApi, '/exercises') #GET POST
-    api_v1.add_resource(ExercisesApiMultiple, '/exercises/all') #POST
+api_v1.add_resource(SessionsApi, '/sessions') #POST
+api_v1.add_resource(SessionFilterApi, '/session/filter') #POST
+api_v1.add_resource(SessionExercisesApi, '/session-exercise')
+api_v1.add_resource(SessionExercisesByIdApi, '/session/<int:session_id>/exercises')
+api_v1.add_resource(CategoriesApi, '/categories') #GET POST
+api_v1.add_resource(ExercisesApi, '/exercises') #GET POST
+api_v1.add_resource(ExercisesApiMultiple, '/exercises/all') #POST

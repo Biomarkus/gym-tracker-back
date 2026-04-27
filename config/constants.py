@@ -2,4 +2,6 @@ SESSION_TABLE_NAME = "sessions"
 EXERCISE_TABLE_NAME = "exercises"
 CATEGORY_TABLE_NAME = "categories"
 SESSION_EXERCISE_TABLE_NAME = "session_exercises"
+SESSION_TAG_ASSOCIATION_TABLE_NAME = "session_tag_associations"
+SESSION_TAGS_TABLE_NAME = "session_tags"
 MAX_TEXT_LENGTH = 30
