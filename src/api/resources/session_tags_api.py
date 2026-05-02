@@ -4,7 +4,7 @@ from flask import request
 from flask_restful import Resource, abort
 from sqlalchemy.exc import SQLAlchemyError
 
-from models.session_tag import SessionTag
+from src.db.models.session_tag import SessionTag
 from src.exceptions.tag_exceptions import TagConflict
 from src.repository import session_tags as session_tags_repository
 from src.schemas.session_tags.session_tags_create import SessionTagsCreationModel
@@ -28,3 +28,9 @@ class SessionTagsApi(Resource):
             abort(HTTPStatus.CONFLICT, description=e.details)
         except SQLAlchemyError as e:
             abort(HTTPStatus.INTERNAL_SERVER_ERROR, description=str(e))
+
+    def get(self) -> list[dict]:
+        tags = session_tags_repository.get_session_tags_by_filters(session_tags_filters={}).all()
+
+        return [SessionTagResponseModel.model_validate(tag).model_dump() for tag in tags]
+

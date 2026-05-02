@@ -1,7 +1,7 @@
 from flask import request
 from flask_restful import Resource
 
-from models.exercise import Exercise
+from src.db.models.exercise import Exercise
 from src.exceptions.exercise_exceptions import ExerciseConflict
 from src.repository import exercise as exercise_repository
 from src.repository.exercise import create_new_exercise

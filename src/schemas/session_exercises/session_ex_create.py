@@ -2,13 +2,10 @@ from pydantic import BaseModel, field_validator
 from src.repository.exercise import get_exercise_by_id
 from src.repository.session import get_sessions_by_filters
 
-
-class SessionExerciseCreationModel(BaseModel):
-    session_id: int
+class SessionExerciseBasicModel(BaseModel):
     exercise_id: int
     reps: int
     weight: float
-
 
     @field_validator('exercise_id')
     @classmethod
@@ -16,6 +13,9 @@ class SessionExerciseCreationModel(BaseModel):
         if not get_exercise_by_id(exercise_id=value).scalar():
             raise ValueError("Exercise id doesn't exist")
         return  value
+
+class SessionExerciseCreationModel(SessionExerciseBasicModel):
+    session_id: int
 
     @field_validator('session_id')
     @classmethod

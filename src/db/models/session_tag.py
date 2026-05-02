@@ -1,9 +1,9 @@
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
 
-from config.constants import SESSION_TAGS_TABLE_NAME, EXERCISE_TABLE_NAME, SESSION_EXERCISE_TABLE_NAME, MAX_TEXT_LENGTH
+from config.constants import SESSION_TAGS_TABLE_NAME, MAX_TEXT_LENGTH
 from factory import Base
-from models.session_tag_association import session_tag_association
+from src.db.models.session_tag_association import session_tag_association
 
 
 class SessionTag(Base):

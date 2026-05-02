@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Query
 
 from factory import session
-from models.session_tag import SessionTag
+from src.db.models.session_tag import SessionTag
 from src.repository.filter_querier import FilterQuerier
 
 
