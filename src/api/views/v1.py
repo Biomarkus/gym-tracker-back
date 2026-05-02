@@ -7,6 +7,7 @@ from src.api.resources.exercises_api_multiple import ExercisesApiMultiple
 from src.api.resources.session_exercises_api import SessionExercisesApi
 from src.api.resources.session_exercises_by_id_api import SessionExercisesByIdApi
 from src.api.resources.session_filter_api import SessionFilterApi
+from src.api.resources.session_tags_api import SessionTagsApi
 from src.api.resources.sessions_api import SessionsApi
 
 api_v1_bp = Blueprint('api_v1', __name__, url_prefix='/api/v1')
@@ -19,3 +20,4 @@ api_v1.add_resource(SessionExercisesByIdApi, '/session/<int:session_id>/exercise
 api_v1.add_resource(CategoriesApi, '/categories') #GET POST
 api_v1.add_resource(ExercisesApi, '/exercises') #GET POST
 api_v1.add_resource(ExercisesApiMultiple, '/exercises/all') #POST
+api_v1.add_resource(SessionTagsApi, '/session-tags') #POST
