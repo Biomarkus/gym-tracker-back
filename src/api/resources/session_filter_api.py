@@ -18,7 +18,7 @@ class SessionFilterApi(Resource):
 
             sessions_query = get_sessions_by_filters(session_filters=session_filters)
 
-            return [SessionResponseModel.model_validate(session_response).model_dump()
+            return [SessionResponseModel.model_validate(session_response).model_dump(by_alias=True)
                     for session_response in sessions_query.all()]
 
         except SQLAlchemyError as exc:

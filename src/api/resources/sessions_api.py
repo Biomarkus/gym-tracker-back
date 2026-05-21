@@ -21,8 +21,7 @@ class SessionsApi(Resource):
             session.add(new_session)
             session.commit()
 
-
-            return SessionResponseModel.model_validate(new_session).model_dump()
+            return SessionResponseModel.model_validate(new_session).model_dump(by_alias=True)
 
         except SQLAlchemyError as exc:
             abort(HTTPStatus.INTERNAL_SERVER_ERROR, description=exc)
