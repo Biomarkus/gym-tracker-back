@@ -16,7 +16,7 @@ api_v1 = Api(api_v1_bp)
 
 api_v1.add_resource(SessionsApi, '/sessions') #POST
 api_v1.add_resource(SessionFilterApi, '/session/filter') #POST
-api_v1.add_resource(SessionExercisesApi, '/session-exercise')
+api_v1.add_resource(SessionExercisesApi, '/session-exercises')
 api_v1.add_resource(SessionExercisesByIdApi, '/session/<int:session_id>/exercises')
 api_v1.add_resource(CategoriesApi, '/categories') #GET POST
 api_v1.add_resource(ExercisesApi, '/exercises') #GET POST

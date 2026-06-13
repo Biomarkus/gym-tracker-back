@@ -6,20 +6,19 @@ from sqlalchemy.exc import SQLAlchemyError
 from flask import request, abort
 
 from src.db.models.session_exercise import SessionExercise
-from src.schemas.session_exercises.session_ex_create import SessionExerciseCreationModel
+from src.schemas.session_exercises.session_ex_create import SessionExerciseCreationModel, SessionExercisesCreationModel
 from src.schemas.session_exercises.session_ex_response import SessionExerciseResponseModel
 from src.repository import session_exercise as session_exercise_repository
-from factory import session
 
 class SessionExercisesApi(Resource):
     def post(self) -> dict:
         try:
             data: dict = request.get_json()
-            session_ex_creation_model: SessionExerciseCreationModel = SessionExerciseCreationModel(**data)
-            new_session_ex = SessionExercise(**session_ex_creation_model.model_dump())
-            session_exercise_repository.create_session_exercise(new_session_ex)
+            session_exercises: SessionExercisesCreationModel = SessionExercisesCreationModel(**data).session_exercises
+            new_session_exercises = [SessionExercise(**session_exercise.model_dump()) for session_exercise in session_exercises]
+            session_exercise_repository.create_session_exercises(new_session_exercises)
 
-            return SessionExerciseResponseModel.model_validate(new_session_ex).model_dump()
+            return [SessionExerciseResponseModel.model_validate(session_exercise).model_dump(by_alias=True) for session_exercise in new_session_exercises]
 
         except SQLAlchemyError as exc:
             abort(HTTPStatus.INTERNAL_SERVER_ERROR, description=exc)

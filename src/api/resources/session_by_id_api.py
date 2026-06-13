@@ -48,7 +48,7 @@ class SessionByIdApi(Resource):
         try:
             session_by_id = get_session_or_abort(session_id)
 
-            return SessionResponseModel.model_validate(session_by_id).model_dump()
+            return SessionResponseModel.model_validate(session_by_id).model_dump(by_alias=True)
         except SessionNotFound as exc:
             abort(HTTPStatus.NOT_FOUND, description=str(exc.details))
         except SQLAlchemyError as exc:

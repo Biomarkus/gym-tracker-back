@@ -10,7 +10,8 @@ from sqlalchemy.orm import Session
 
 Base = declarative_base()
 
-engine: Engine = create_engine("sqlite:///gym.db", echo=True)
+engine: Engine = create_engine("sqlite:///gym.db", echo=True, connect_args={"check_same_thread": False}
+)
 
 Base.metadata.create_all(bind=engine)
 
