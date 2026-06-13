@@ -59,7 +59,10 @@ class SessionByIdApi(Resource):
             data = request.get_json()
             updated_session = SessionUpdateModel(**data)
             session_to_update = get_session_or_abort(session_id)
-            session_to_update.title = updated_session.title
+            if updated_session.title:
+                session_to_update.title = updated_session.title
+            if updated_session.end_date:
+                session_to_update.end_date = updated_session.end_date
             if updated_session.session_tag_ids:
                 session_to_update.session_tags = get_session_tags(updated_session.session_tag_ids)
             if updated_session.session_exercises:
