@@ -1,5 +1,4 @@
 from sqlalchemy.orm import Query
-
 from factory import session
 from src.db.models.session import Session
 from src.repository.filter_querier import FilterQuerier

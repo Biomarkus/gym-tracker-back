@@ -2,10 +2,10 @@ from pydantic import ConfigDict
 from pydantic.alias_generators import to_camel
 
 from src.schemas.exercises.exercise_response import ExerciseResponseModel
-from src.schemas.session_exercises.session_ex_create import SessionExerciseCreationModel
+from src.schemas.session_exercises.session_ex_create import SessionExerciseBasicModel
 
 
-class SessionExerciseResponseModel(SessionExerciseCreationModel):
+class SessionExerciseResponseModel(SessionExerciseBasicModel):
     id: int
     exercise: ExerciseResponseModel
 
