@@ -14,7 +14,7 @@ class Session(Base):
     session_id = Column(Integer, primary_key=True, autoincrement=True)
     title: str = Column(String(MAX_TEXT_LENGTH), nullable=False)
     start_date: datetime = Column(DateTime, nullable=False, default=datetime.now())
-    end_date: datetime = Column(DateTime, nullable=True)
+    end_date = Column(String, nullable=True)
     session_exercises: list = relationship(
         "SessionExercise", cascade="all, delete-orphan"
     )

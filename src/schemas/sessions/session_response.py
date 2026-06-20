@@ -12,12 +12,12 @@ from src.schemas.session_exercises.session_ex_response import SessionExerciseRes
 class SessionResponseModel(SessionCreationBasicModel):
     session_id: int
     start_date: datetime
-    end_date: datetime | None
+    end_date: str | None
     session_exercises: list[SessionExerciseResponseModel] = []
     session_tags: list[SessionTagResponseModel] = []
 
     model_config = ConfigDict(from_attributes=True, alias_generator=to_camel, populate_by_name=True)
 
-    @field_serializer('start_date','end_date')
+    @field_serializer('start_date')
     def serialize_finish_time(self, value: datetime | None) -> str | None:
         return format_date_response(date_input=value)
